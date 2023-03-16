@@ -7,6 +7,14 @@ class SoundRepository(private val dao: SoundDao) {
     suspend fun deleteSound(sound: SoundEntity) =
         dao.delete(sound)
 
-    suspend fun getSounds(soundTrigger: String, soundFranchise: String) =
-        dao.getSounds(soundTrigger, soundFranchise)
+    fun getSoundsUnfiltered() =
+        dao.getSoundsUnfiltered()
+
+    fun getSoundsFiltered(soundTrigger: String, soundFranchise: String) =
+        dao.getSoundsFiltered(soundTrigger, soundFranchise)
+
+    fun getSound(soundLabel: String) =
+        dao.getSound(soundLabel)
+
+
 }

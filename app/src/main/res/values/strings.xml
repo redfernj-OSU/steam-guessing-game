@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">steam-guessing-game</string>
+
+    <string name="sound_category">Set New Sound: </string>
+
+    <string name="sound_label_title">Sound Label:</string>
+    <string name="sound_label_key">soundLabel</string>
+
+    <string name="sound_url_title">Sound URL:</string>
+    <string name="sound_url_key">soundUrl</string>
+
+    <string name="sound_trigger_title">Sound Trigger:</string>
+    <string name="sound_trigger_key">soundTrigger</string>
+
+    <string name="sound_franchise_title">Sound Franchise:</string>
+    <string name="sound_franchise_key">soundFranchise</string>
 </resources>
