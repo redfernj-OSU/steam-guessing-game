@@ -9,7 +9,7 @@ data class SoundEntity(
 //    URL to pull sound data
     val sound_url      : String,
 //    How to trigger sound (win, lose, etc.)
-    val sound_trigger     : String,
+    val soundTrigger     : String,
 //    Franchise that the sound comes from
-    val sound_franchise : String
+    val soundFranchise : String
 )
