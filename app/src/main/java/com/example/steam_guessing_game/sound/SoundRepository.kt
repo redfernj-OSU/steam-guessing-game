@@ -1,4 +1,7 @@
-package com.example.steam_guessing_game
+package com.example.steam_guessing_game.sound
+
+import com.example.steam_guessing_game.sound.SoundDao
+import com.example.steam_guessing_game.sound.SoundEntity
 
 class SoundRepository(private val dao: SoundDao) {
     suspend fun insertSound(sound: SoundEntity) =

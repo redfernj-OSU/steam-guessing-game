@@ -1,4 +1,4 @@
-package com.example.steam_guessing_game
+package com.example.steam_guessing_game.sound
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

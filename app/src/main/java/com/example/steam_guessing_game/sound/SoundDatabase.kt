@@ -1,4 +1,4 @@
-package com.example.steam_guessing_game
+package com.example.steam_guessing_game.sound
 
 import android.content.Context
 import androidx.room.Database
@@ -10,7 +10,7 @@ abstract class SoundDatabase : RoomDatabase() {
     abstract fun soundDao(): SoundDao
 
     companion object {
-        @Volatile private var instance: SoundDatabase ?= null
+        @Volatile private var instance: SoundDatabase?= null
 
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(
