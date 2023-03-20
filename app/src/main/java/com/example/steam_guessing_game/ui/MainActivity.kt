@@ -3,6 +3,8 @@ package com.example.steam_guessing_game.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.example.steam_guessing_game.R
 import com.example.steam_guessing_game.api.SteamService
 import com.example.steam_guessing_game.api.SteamStoreService
@@ -10,9 +12,14 @@ import com.example.steam_guessing_game.data.App
 import com.example.steam_guessing_game.data.Review
 import com.example.steam_guessing_game.data.ReviewResults
 import com.example.steam_guessing_game.data.SteamQueryResults
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.URL
 import kotlin.concurrent.thread
 import kotlin.random.Random
 
@@ -32,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         getSteamApps()
+
+
+
     }
 
     private fun getSteamApps(){
@@ -40,8 +50,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<SteamQueryResults>, response: Response<SteamQueryResults>){
                     if(response.isSuccessful){
                         apps = response.body()!!.applist.apps
-                        val temp : App = apps[Random.nextInt(apps.size)]
-                        getReviews(temp.appid.toLong())
+                        getReviews(apps[Random.nextInt(apps.size)].appid.toLong())
                     }
                     else{
                         Log.e("f", "Error: ${response.errorBody()?.string()}")
@@ -64,8 +73,15 @@ class MainActivity : AppCompatActivity() {
 
                             review = response.body()!!.reviews[0].review
                             correctID = id.toInt()
+                            val imageView = findViewById<ImageView>(R.id.TestImage)
 
-                            Log.d("MainActivity", "Review: ${correctID} ::: ${review}")
+
+                            if(placeImage(imageView, correctID.toLong())){
+                                Log.d("MainActivity", "Review: ${correctID} ::: ${review}")
+                            }
+                            else{
+                                getReviews(apps[Random.nextInt(apps.size)].appid.toLong())
+                            }
                         }
                         else{
                             getReviews(apps[Random.nextInt(apps.size)].appid.toLong())
@@ -82,6 +98,27 @@ class MainActivity : AppCompatActivity() {
                     Log.d("MainActivity", "Error making API call: ${t.message}")
                 }
             })
+    }
+
+    private fun placeImage(view: ImageView, id: Long) : Boolean{
+        val url = "https://cdn.cloudflare.steamstatic.com/steam/apps/${id}/header.jpg"
+        if(isUrlValid(url)){
+            Glide.with(baseContext)
+                .load(url)
+                .into(view)
+            return true
+        }
+        return false
+
+    }
+
+    fun isUrlValid(urlString: String): Boolean {
+        return try {
+            URL(urlString).toURI()
+            true
+        } catch (e: Exception) {
+            false
+        }
     }
 }
 
