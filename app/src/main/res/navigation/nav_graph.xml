@@ -3,15 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/game_fragment">
+    app:startDestination="@id/menu_fragment">
+
+    <fragment
+        android:id="@+id/menu_fragment"
+        android:name="com.example.steam_guessing_game.fragment.MenuFragment"
+        android:label="@string/main_menu">
+            <action
+                android:id="@+id/navigate_to_game"
+                app:destination="@id/game_fragment"/>
+
+            <action
+                android:id="@+id/navigate_to_create_sound"
+                app:destination="@id/create_sound_fragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/game_fragment"
         android:name="com.example.steam_guessing_game.fragment.GameFragment"
         android:label="@string/game_title">
-        <action
-            android:id="@+id/navigate_to_create_sound"
-            app:destination="@id/create_sound"/>
     </fragment>
 
     <fragment

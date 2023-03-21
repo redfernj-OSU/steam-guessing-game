@@ -43,7 +43,6 @@ class GameFragment: Fragment(R.layout.game) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setHasOptionsMenu(true)
         getSteamApps()
     }
 
@@ -156,20 +155,6 @@ class GameFragment: Fragment(R.layout.game) {
             true
         } catch (e: Exception) {
             false
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_bar, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.create_sound_menu -> {
-                findNavController().navigate(R.id.create_sound_fragment)
-                true
-            }
-            else -> return super.onOptionsItemSelected(item)
         }
     }
 }

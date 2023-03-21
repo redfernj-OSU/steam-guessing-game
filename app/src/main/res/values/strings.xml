@@ -1,9 +1,10 @@
 <resources>
     <string name="create_sound">Create Sound</string>
-
     <string name="app_name">steam-guessing-game</string>
+    <string name="main_menu">Main Menu</string>
 
     <string name="sound_button">Set New Sound</string>
+    <string name="start_button">Start Game</string>
 
     <string name="sound_label_title">Sound Label:</string>
     <string name="sound_label_key">soundLabel</string>
