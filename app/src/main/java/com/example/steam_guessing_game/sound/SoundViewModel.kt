@@ -30,4 +30,7 @@ class SoundViewModel(application: Application): AndroidViewModel(application) {
 
     fun getSound(label: String) =
         repository.getSound(label).asLiveData()
+
+    fun getSounds() =
+        repository.getSoundsUnfiltered().asLiveData()
 }

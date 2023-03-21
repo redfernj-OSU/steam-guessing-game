@@ -15,6 +15,8 @@
     <string name="sound_trigger_title">Sound Trigger:</string>
     <string name="sound_trigger_key">soundTrigger</string>
 
+    <string name="available_sounds_title">Available Sounds: </string>
+
     <string name="on_win">On Win</string>
     <string name="on_lose">On Lose</string>
     <string name="on_click">On Click</string>

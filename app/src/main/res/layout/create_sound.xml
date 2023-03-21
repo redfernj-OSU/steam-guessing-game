@@ -87,4 +87,18 @@
             android:layout_gravity="center"
             android:textSize="20dp"/>
 
+    <!--    Available Sounds List-->
+        <TextView
+            android:id="@+id/sound_available_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/available_sounds_title"
+            android:textSize="20dp"/>
+
+    <Spinner
+        android:id="@+id/sound_available_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingBottom="15dp"/>
+
 </androidx.appcompat.widget.LinearLayoutCompat>

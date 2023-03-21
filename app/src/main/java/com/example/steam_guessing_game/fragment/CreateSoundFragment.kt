@@ -19,14 +19,29 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val spinner: Spinner = view.findViewById(R.id.sound_trigger_spinner)
+        val triggerSpinner: Spinner = view.findViewById(R.id.sound_trigger_spinner)
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.sound_trigger_list,
             android.R.layout.simple_spinner_item
-        ).also { adaper ->
-            adaper.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adaper
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            triggerSpinner.adapter = adapter
+        }
+
+        val availableSpinner: Spinner = view.findViewById(R.id.sound_available_spinner)
+        soundViewModel.getSounds().observe(viewLifecycleOwner) {sounds ->
+            val soundLabels: ArrayList<String> = arrayListOf()
+            for (i in sounds) {
+                soundLabels.add(i!!.soundLabel)
+            }
+
+            val adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                soundLabels
+            )
+            availableSpinner.adapter = adapter
         }
 
         view.findViewById<Button>(R.id.create_sound_button).setOnClickListener {
