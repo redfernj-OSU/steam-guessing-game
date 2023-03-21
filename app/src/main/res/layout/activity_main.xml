@@ -6,15 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <FrameLayout
+        android:layout_width="325dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/scrollview_outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/textViewReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:text="Hello World!"
+                android:textSize="14dp"/>
+        </ScrollView>
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/imageView4"

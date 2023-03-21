@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                         if(response.body()?.success == 1 && response.body()!!.reviews.size > 0){
 
                             review = response.body()!!.reviews[0].review
+                            findViewById<TextView>(R.id.textViewReview).text = review
                             correctID = id.toInt()
                             val imageView = findViewById<ImageView>(R.id.imageView3)
 
