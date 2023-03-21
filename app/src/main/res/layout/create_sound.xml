@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:id="@+id/create_sound_fragment">
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="create sound fragment"/>-->
+
+    <!--    Label Input -->
+        <TextView
+            android:id="@+id/sound_label_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sound_label_title"
+            android:paddingTop="15dp"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/sound_label_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:paddingBottom="15dp"
+            android:hint="@string/desc_sound_label_input"/>
+
+
+    <!--    URL Input-->
+        <TextView
+            android:id="@+id/sound_URL_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sound_url_title"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/sound_URL_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:paddingBottom="15dp"
+            android:hint="@string/desc_sound_URL_input"/>
+
+
+    <!--    Franchise Input-->
+    <TextView
+        android:id="@+id/sound_franchise_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sound_franchise_title"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/sound_Franchise_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:paddingBottom="15dp"
+        android:hint="@string/desc_sound_franchise_input"/>
+
+
+    <!--    Trigger List-->
+    <TextView
+        android:id="@+id/sound_trigger_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sound_trigger_title"
+        android:textSize="20dp"/>
+
+    <Spinner
+        android:id="@+id/sound_trigger_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingBottom="15dp"
+        android:contentDescription="@string/desc_sound_trigger_input"/>
+
+
+
+    <!--    Confirmation Button-->
+        <Button
+            android:id="@+id/create_sound_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sound_button"
+            android:layout_gravity="center"
+            android:textSize="20dp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

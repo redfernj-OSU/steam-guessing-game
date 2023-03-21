@@ -1,3 +1,34 @@
 <resources>
+    <string name="create_sound">Create Sound</string>
+
     <string name="app_name">steam-guessing-game</string>
+
+    <string name="sound_button">Set New Sound</string>
+
+    <string name="sound_label_title">Sound Label:</string>
+    <string name="sound_label_key">soundLabel</string>
+
+    <string name="sound_url_title">Sound URL:</string>
+    <string name="sound_url_key">soundUrl</string>
+
+    <string name="sound_trigger_title">Sound Trigger:</string>
+    <string name="sound_trigger_key">soundTrigger</string>
+
+    <string name="on_win">On Win</string>
+    <string name="on_lose">On Lose</string>
+    <string name="on_click">On Click</string>
+    <string name="show_trigger">Show Game</string>
+
+    <string name="sound_franchise_title">Sound Franchise:</string>
+    <string name="sound_franchise_key">soundFranchise</string>
+
+
+    <string name="game_title">Steam Guessing Game</string>
+
+    <string name="desc_sound_label_input">Input label for desired sound</string>
+    <string name="desc_sound_URL_input">Input URL for desired sound</string>
+    <string name="desc_sound_franchise_input">Input franchise for desired sound</string>
+
+    <string name="desc_sound_trigger_input">Steam Guessing Game</string>
+
 </resources>
