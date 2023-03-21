@@ -16,7 +16,7 @@
 
     <!--    Label Input -->
         <TextView
-            android:id="@id/sound_label_input"
+            android:id="@+id/sound_label_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sound_label_title"
@@ -34,7 +34,7 @@
 
     <!--    URL Input-->
         <TextView
-            android:id="@id/sound_URL_input"
+            android:id="@+id/sound_URL_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sound_url_title"
@@ -51,7 +51,7 @@
 
     <!--    Franchise Input-->
     <TextView
-        android:id="@id/sound_Franchise_input"
+        android:id="@+id/sound_franchise_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sound_franchise_title"
@@ -68,7 +68,7 @@
 
     <!--    Trigger List-->
     <TextView
-        android:id="@id/sound_trigger_spinner"
+        android:id="@+id/sound_trigger_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sound_trigger_title"
