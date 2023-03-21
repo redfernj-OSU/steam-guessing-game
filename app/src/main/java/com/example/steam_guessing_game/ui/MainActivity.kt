@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun placeImage(view: ImageView, id: Long, isMain: Boolean) : Boolean{
-        val url = "https://cdn.cloudflare.steamstatic.com/steam/apps/${id}/header.jpg"
+        val url = "https://cdn.cloudflare.steamstatic.com/steam/apps/${id}/capsule_231x87.jpg"
         val handler = Handler(Looper.getMainLooper())
         if(isUrlValid(url)){
             Glide.with(baseContext)

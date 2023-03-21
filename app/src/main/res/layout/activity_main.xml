@@ -18,37 +18,46 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="416dp"
-        android:layout_height="173dp"
-        android:layout_marginTop="173dp"
+        android:layout_width="300dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="520dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-3dp"
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="416dp"
-        android:layout_height="173dp"
-        android:layout_marginTop="346dp"
+        android:layout_width="300dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="652dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="416dp"
-        android:layout_height="173dp"
+        android:layout_width="300dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="388dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="416dp"
-        android:layout_height="173dp"
-        android:layout_marginTop="519dp"
+        android:layout_width="300dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="256dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
         tools:src="@tools:sample/backgrounds/scenic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
