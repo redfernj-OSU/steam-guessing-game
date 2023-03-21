@@ -9,11 +9,6 @@
     android:paddingRight="10dp"
     android:id="@+id/create_sound_fragment">
 
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:text="create sound fragment"/>-->
-
     <!--    Label Input -->
         <TextView
             android:id="@+id/sound_label_text"

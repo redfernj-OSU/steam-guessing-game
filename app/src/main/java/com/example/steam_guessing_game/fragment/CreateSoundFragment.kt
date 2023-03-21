@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -30,10 +31,10 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
 
         view.findViewById<Button>(R.id.create_sound_button).setOnClickListener {
             var newSound = SoundEntity(
-                R.id.sound_label_input.toString(),
-                R.id.sound_URL_input.toString(),
-                R.id.sound_trigger_spinner.toString(),
-                R.id.sound_Franchise_input.toString()
+                view.findViewById<EditText>(R.id.sound_label_input).getText().toString(),
+                view.findViewById<EditText>(R.id.sound_URL_input).getText().toString(),
+                view.findViewById<Spinner>(R.id.sound_trigger_spinner).getSelectedItem().toString(),
+                view.findViewById<EditText>(R.id.sound_Franchise_input).getText().toString()
             )
 
             soundViewModel.addSound(newSound)
