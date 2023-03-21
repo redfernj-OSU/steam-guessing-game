@@ -2,9 +2,13 @@
     android:shape="rectangle">
 
     <stroke
-        android:width="5dp"
+        android:width="0dp"
         android:color="#2196F3" />
 
     <corners android:radius="10dp" />
+    <gradient
+        android:startColor="#2d344a"
+        android:endColor="#576674"
+        android:type="linear" />
 
 </shape>
