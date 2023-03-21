@@ -26,4 +26,10 @@
 
     <string name="game_title">Steam Guessing Game</string>
 
+    <string name="desc_sound_label_input">Input label for desired sound</string>
+    <string name="desc_sound_URL_input">Input URL for desired sound</string>
+    <string name="desc_sound_franchise_input">Input franchise for desired sound</string>
+
+    <string name="desc_sound_trigger_input">Steam Guessing Game</string>
+
 </resources>

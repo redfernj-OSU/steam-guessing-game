@@ -6,7 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:paddingRight="10dp"
+    android:id="@+id/create_sound_fragment">
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="create sound fragment"/>-->
 
     <!--    Label Input -->
         <TextView
@@ -22,7 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:paddingBottom="15dp"/>
+            android:paddingBottom="15dp"
+            android:hint="@string/desc_sound_label_input"/>
+
 
     <!--    URL Input-->
         <TextView
@@ -37,7 +45,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:paddingBottom="15dp"/>
+            android:paddingBottom="15dp"
+            android:hint="@string/desc_sound_URL_input"/>
+
 
     <!--    Franchise Input-->
     <TextView
@@ -45,14 +55,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sound_franchise_title"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/sound_Franchise_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:paddingBottom="15dp"/>
+        android:paddingBottom="15dp"
+        android:hint="@string/desc_sound_franchise_input"/>
+
 
     <!--    Trigger List-->
     <TextView
@@ -65,8 +77,9 @@
     <Spinner
         android:id="@+id/sound_trigger_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="15dp"/>
+        android:layout_height="48dp"
+        android:paddingBottom="15dp"
+        android:contentDescription="@string/desc_sound_trigger_input"/>
 
 
 

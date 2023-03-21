@@ -6,6 +6,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.findFragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.steam_guessing_game.R
 
@@ -23,8 +26,7 @@ class GameFragment: Fragment(R.layout.game) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.create_sound_menu -> {
-//                val directions =
-//                findNavController()
+                findNavController().navigate(R.id.create_sound_fragment)
                 true
             }
 

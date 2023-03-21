@@ -2,11 +2,11 @@
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_nav_graph"
-    app:startDestination="@layout/game">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/game_fragment">
 
     <fragment
-        android:id="@+id/game"
+        android:id="@+id/game_fragment"
         android:name="com.example.steam_guessing_game.fragment.GameFragment"
         android:label="@string/game_title">
         <action
@@ -15,7 +15,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/create_sound"
+        android:id="@+id/create_sound_fragment"
         android:name="com.example.steam_guessing_game.fragment.CreateSoundFragment"
         android:label="@string/create_sound">
     </fragment>
