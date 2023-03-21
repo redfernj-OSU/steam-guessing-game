@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="sound_trigger_list">
+        <item>@string/on_win</item>
+        <item>@string/on_lose</item>
+        <item>@string/on_click</item>
+        <item>@string/show_trigger</item>
+    </string-array>
+
+</resources>
