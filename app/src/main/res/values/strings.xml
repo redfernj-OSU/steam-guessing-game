@@ -5,6 +5,8 @@
 
     <string name="sound_button">Set New Sound</string>
     <string name="start_button">Start Game</string>
+    <string name="set_button">Set Sound Pack</string>
+    <string name="delete_button">Delete Sound</string>
 
     <string name="sound_label_title">Sound Label:</string>
     <string name="sound_label_key">soundLabel</string>
@@ -15,7 +17,7 @@
     <string name="sound_trigger_title">Sound Trigger:</string>
     <string name="sound_trigger_key">soundTrigger</string>
 
-    <string name="available_sounds_title">Available Sounds: </string>
+    <string name="available_sounds_title">Sound Packs: </string>
 
     <string name="on_win">On Win</string>
     <string name="on_lose">On Lose</string>

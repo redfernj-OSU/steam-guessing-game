@@ -95,10 +95,20 @@
             android:text="@string/available_sounds_title"
             android:textSize="20dp"/>
 
-    <Spinner
-        android:id="@+id/sound_available_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:paddingBottom="15dp"/>
+        <Spinner
+            android:id="@+id/sound_available_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingBottom="15dp"/>
+
+        <Button
+            android:id="@+id/set_sound_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/set_button"
+            android:textSize="20dp"/>
+
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

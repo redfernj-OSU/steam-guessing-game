@@ -9,12 +9,12 @@ interface SoundDao {
     suspend fun insert(soundEntity: SoundEntity)
 
     @Delete
-    suspend fun delete(soundEntity: SoundEntity)
+    suspend fun delete(soundEntity: SoundEntity?)
 
     @Query(
         "SELECT * FROM SoundEntity"
     )
-    fun getSoundsUnfiltered(): Flow<List<SoundEntity?>>
+    fun getSoundsUnfiltered(): Flow<List<SoundEntity>>
 
 //    Get all sounds with a specific sound_trigger and sound_franchise
     @Query(
@@ -25,5 +25,5 @@ interface SoundDao {
     @Query(
         "SELECT * FROM SoundEntity Where soundLabel = :soundLabel"
     )
-    fun getSound(soundLabel: String): Flow<SoundEntity?>
+    fun getSound(soundLabel: String): Flow<SoundEntity>
 }
