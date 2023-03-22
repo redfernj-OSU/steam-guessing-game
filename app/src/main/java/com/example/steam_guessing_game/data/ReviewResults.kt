@@ -4,9 +4,9 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ReviewResults (
-        val success: Int,
-        val query_summary: QuerySummary,
-        val reviews: List<Review>
+    val success: Int,
+    val query_summary: QuerySummary,
+    val reviews: List<Review>
 )
 
 @JsonClass(generateAdapter = true)

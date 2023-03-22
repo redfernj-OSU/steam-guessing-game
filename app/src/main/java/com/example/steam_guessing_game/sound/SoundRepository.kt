@@ -13,11 +13,16 @@ class SoundRepository(private val dao: SoundDao) {
     fun getSoundsUnfiltered() =
         dao.getSoundsUnfiltered()
 
-    fun getSoundsFiltered(soundTrigger: String, soundFranchise: String) =
-        dao.getSoundsFiltered(soundTrigger, soundFranchise)
+    fun getSoundsFiltered(soundFranchise: String) =
+        dao.getSoundsFiltered(soundFranchise)
 
     fun getSound(soundLabel: String) =
         dao.getSound(soundLabel)
 
+    suspend fun setChosen(soundFranchise: String) =
+        dao.setChosen(soundFranchise)
+
+    suspend fun removeChosen() =
+        dao.removeChosen()
 
 }

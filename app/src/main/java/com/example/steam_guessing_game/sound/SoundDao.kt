@@ -18,12 +18,23 @@ interface SoundDao {
 
 //    Get all sounds with a specific sound_trigger and sound_franchise
     @Query(
-        "SELECT * FROM SoundEntity WHERE soundTrigger = :soundTrigger AND soundFranchise = :soundFranchise"
+        "SELECT * FROM SoundEntity WHERE soundFranchise = :soundFranchise"
     )
-    fun getSoundsFiltered(soundTrigger: String, soundFranchise: String): Flow<List<SoundEntity?>>
+    fun getSoundsFiltered(soundFranchise: String): Flow<List<SoundEntity?>>
 
     @Query(
-        "SELECT * FROM SoundEntity Where soundLabel = :soundLabel"
+        "SELECT * FROM SoundEntity WHERE soundLabel = :soundLabel"
     )
     fun getSound(soundLabel: String): Flow<SoundEntity>
+
+    @Query(
+        "UPDATE SoundEntity SET chosen = TRUE WHERE soundFranchise = :soundFranchise"
+    )
+    suspend fun setChosen(soundFranchise: String)
+
+    @Query(
+        "UPDATE SoundEntity SET chosen = FALSE"
+    )
+    suspend fun removeChosen()
+
 }
