@@ -28,10 +28,11 @@
             <argument
                 android:name="randomIndex"
                 app:argType="integer" />
-
-            <!-- Define the second argument -->
             <argument
                 android:name="selectedIndex"
+                app:argType="integer" />
+            <argument
+                android:name="correctID"
                 app:argType="integer" />
         </action>
     </fragment>

@@ -38,6 +38,12 @@ class GameFragment: Fragment(R.layout.game) {
     private var correctID = 0
     private var review = ""
     lateinit var apps : List<App>
+    lateinit var ImageView3 : ImageView
+    lateinit var ImageView4 : ImageView
+    lateinit var ImageView5 : ImageView
+    lateinit var ImageView6 : ImageView
+
+
 
     private val steamStoreService = SteamStoreService.create()
 
@@ -49,25 +55,39 @@ class GameFragment: Fragment(R.layout.game) {
 
         getSteamApps(randomIndex)
 
+        ImageView3 = view.findViewById<ImageView>(R.id.imageView3)
+        ImageView4 = view.findViewById<ImageView>(R.id.imageView4)
+        ImageView5 = view.findViewById<ImageView>(R.id.imageView5)
+        ImageView6 = view.findViewById<ImageView>(R.id.imageView6)
 
-        view.findViewById<ImageView>(R.id.imageView3).setOnClickListener {
+        ImageView3.isEnabled = false
+        ImageView4.isEnabled = false
+        ImageView5.isEnabled = false
+        ImageView6.isEnabled = false
+
+
+        ImageView3.setOnClickListener {
+            Log.d("Clicker", "${correctID}")
             val selectedIndex = 3
-            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex)
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
             findNavController().navigate(action)
         }
-        view.findViewById<ImageView>(R.id.imageView4).setOnClickListener {
+        ImageView4.setOnClickListener {
+            Log.d("Clicker", "${correctID}")
             val selectedIndex = 4
-            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex)
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
             findNavController().navigate(action)
         }
-        view.findViewById<ImageView>(R.id.imageView5).setOnClickListener {
+        ImageView5.setOnClickListener {
+            Log.d("Clicker", "${correctID}")
             val selectedIndex = 5
-            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex)
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
             findNavController().navigate(action)
         }
-        view.findViewById<ImageView>(R.id.imageView6).setOnClickListener {
+        ImageView6.setOnClickListener {
+            Log.d("Clicker", "${correctID}")
             val selectedIndex = 6
-            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex)
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
             findNavController().navigate(action)
         }
     }
@@ -121,7 +141,7 @@ class GameFragment: Fragment(R.layout.game) {
                                 while(!temp){
                                     temp = placeImage(view!!.findViewById<ImageView>(randomIndex[3]),apps[Random.nextInt(apps.size)].appid.toLong(), false, randomIndex)
                                 }
-                                Log.d("MainActivity", "Review: ${correctID} ::: ${review}")
+                                Log.d("Review", "Review: ${correctID} ::: ${review}")
                             }
                             else{
                                 getReviews(apps[Random.nextInt(apps.size)].appid.toLong(), randomIndex)
@@ -130,6 +150,11 @@ class GameFragment: Fragment(R.layout.game) {
                         else{
                             getReviews(apps[Random.nextInt(apps.size)].appid.toLong(), randomIndex)
                         }
+
+                        ImageView3.isEnabled = true
+                        ImageView4.isEnabled = true
+                        ImageView5.isEnabled = true
+                        ImageView6.isEnabled = true
 
                     }
                     else{
@@ -146,6 +171,7 @@ class GameFragment: Fragment(R.layout.game) {
 
     private fun placeImage(view: ImageView, id: Long, isMain: Boolean, randomIndex: List<Int>) : Boolean{
         val url = "https://cdn.cloudflare.steamstatic.com/steam/apps/${id}/capsule_231x87.jpg"
+        view.tag = url
         val handler = Handler(Looper.getMainLooper())
         if(isUrlValid(url)){
             Glide.with(requireContext())
