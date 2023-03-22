@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.devtools.ksp' version '1.7.21-1.0.8'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -58,6 +59,7 @@ dependencies {
 
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    implementation 'com.google.devtools.ksp:symbol-processing-api:1.7.21-1.0.8'
 
 //    Fragment
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'

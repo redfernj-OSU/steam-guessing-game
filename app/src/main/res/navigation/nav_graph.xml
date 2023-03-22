@@ -22,6 +22,27 @@
         android:id="@+id/game_fragment"
         android:name="com.example.steam_guessing_game.fragment.GameFragment"
         android:label="@string/game_title">
+        <action
+            android:id="@+id/navigate_to_results"
+            app:destination="@id/results_fragment">
+            <argument
+                android:name="randomIndex"
+                app:argType="integer" />
+
+            <!-- Define the second argument -->
+            <argument
+                android:name="selectedIndex"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/results_fragment"
+        android:name="com.example.steam_guessing_game.fragment.ResultsFragment"
+        android:label="@string/result">
+        <action
+            android:id="@+id/navigate_to_game"
+            app:destination="@id/game_fragment"/>
     </fragment>
 
     <fragment
