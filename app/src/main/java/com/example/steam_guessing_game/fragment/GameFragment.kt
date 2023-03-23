@@ -60,6 +60,8 @@ class GameFragment: Fragment(R.layout.game) {
         ImageView4 = view.findViewById<ImageView>(R.id.imageView4)
         ImageView5 = view.findViewById<ImageView>(R.id.imageView5)
         ImageView6 = view.findViewById<ImageView>(R.id.imageView6)
+        val scoreText = view.findViewById<TextView>(R.id.scoreText)
+        scoreText.text = "Score: ${curScore}"
 
         ImageView3.isEnabled = false
         ImageView4.isEnabled = false
