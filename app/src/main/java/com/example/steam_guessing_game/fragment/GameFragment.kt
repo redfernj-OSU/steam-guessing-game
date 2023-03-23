@@ -68,25 +68,25 @@ class GameFragment: Fragment(R.layout.game) {
 
         ImageView3.setOnClickListener {
             Log.d("Clicker", "${correctID}")
-            val selectedIndex = 3
+            val selectedIndex = R.id.imageView3
             val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
             findNavController().navigate(action)
         }
         ImageView4.setOnClickListener {
             Log.d("Clicker", "${correctID}")
-            val selectedIndex = 4
+            val selectedIndex = R.id.imageView4
             val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
             findNavController().navigate(action)
         }
         ImageView5.setOnClickListener {
             Log.d("Clicker", "${correctID}")
-            val selectedIndex = 5
+            val selectedIndex = R.id.imageView5
             val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
             findNavController().navigate(action)
         }
         ImageView6.setOnClickListener {
             Log.d("Clicker", "${correctID}")
-            val selectedIndex = 6
+            val selectedIndex = R.id.imageView6
             val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
             findNavController().navigate(action)
         }

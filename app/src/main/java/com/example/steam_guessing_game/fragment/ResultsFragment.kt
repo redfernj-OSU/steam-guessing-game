@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.steam_guessing_game.R
@@ -18,12 +19,19 @@ class ResultsFragment: Fragment(R.layout.results) {
         val selectedIndex = requireArguments().getInt("selectedIndex")
         val correctID = requireArguments().getInt("correctID")
 
+
+
+
         Log.d("Results", "${correctID}")
 
         if(correctIndex == selectedIndex){
+            view.findViewById<TextView>(R.id.win_text).visibility = View.VISIBLE
+            view.findViewById<TextView>(R.id.lose_text).visibility = View.INVISIBLE
             //win condition
         }
         else{
+            view.findViewById<TextView>(R.id.lose_text).visibility = View.VISIBLE
+            view.findViewById<TextView>(R.id.win_text).visibility = View.INVISIBLE
             //lose condition
         }
     }
