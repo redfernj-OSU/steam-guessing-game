@@ -55,6 +55,9 @@
                 android:name="currentScore"
                 app:argType="integer" />
         </action>
+        <action
+            android:id="@+id/navigate_to_menu"
+            app:destination="@id/menu_fragment"/>
     </fragment>
 
     <fragment
