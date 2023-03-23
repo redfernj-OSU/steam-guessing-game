@@ -1,8 +1,11 @@
 package com.example.steam_guessing_game.fragment
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -11,8 +14,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 import com.example.steam_guessing_game.R
 import com.google.android.material.navigation.NavigationView
+import kotlin.random.Random
 
 class ResultsFragment: Fragment(R.layout.results) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,7 +35,8 @@ class ResultsFragment: Fragment(R.layout.results) {
         val menuButton = view.findViewById<Button>(R.id.return_to_menu_button)
         val steamButton = view.findViewById<Button>(R.id.steam_page_button)
 
-
+        val resultImage = view.findViewById<ImageView>(R.id.picked_image)
+        placeImage(resultImage, correctID.toLong())
 
 
         Log.d("Results", "${correctID}")
@@ -63,5 +72,11 @@ class ResultsFragment: Fragment(R.layout.results) {
         }
 
     }
+    private fun placeImage(view: ImageView, id: Long){
+        val url = "https://cdn.cloudflare.steamstatic.com/steam/apps/${id}/capsule_231x87.jpg"
 
+        Glide.with(requireContext())
+            .load(url)
+            .into(view)
+    }
 }
