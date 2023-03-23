@@ -48,6 +48,7 @@ class GameFragment: Fragment(R.layout.game) {
     private val steamStoreService = SteamStoreService.create()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val curScore = requireArguments().getInt("currentScore")
         super.onViewCreated(view, savedInstanceState)
 
         val nums = listOf(R.id.imageView3, R.id.imageView4, R.id.imageView5, R.id.imageView6)
@@ -67,27 +68,19 @@ class GameFragment: Fragment(R.layout.game) {
 
 
         ImageView3.setOnClickListener {
-            Log.d("Clicker", "${correctID}")
-            val selectedIndex = 3
-            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], R.id.imageView3, correctID, curScore)
             findNavController().navigate(action)
         }
         ImageView4.setOnClickListener {
-            Log.d("Clicker", "${correctID}")
-            val selectedIndex = 4
-            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], R.id.imageView4, correctID, curScore)
             findNavController().navigate(action)
         }
         ImageView5.setOnClickListener {
-            Log.d("Clicker", "${correctID}")
-            val selectedIndex = 5
-            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], R.id.imageView5, correctID, curScore)
             findNavController().navigate(action)
         }
         ImageView6.setOnClickListener {
-            Log.d("Clicker", "${correctID}")
-            val selectedIndex = 6
-            val action = GameFragmentDirections.navigateToResults(randomIndex[0], selectedIndex, correctID)
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], R.id.imageView6, correctID, curScore)
             findNavController().navigate(action)
         }
     }
