@@ -77,7 +77,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                 "On Win"
                 ).observe(viewLifecycleOwner) {sound ->
                 try {
+                    mediaPlayer.reset()
                     mediaPlayer.setDataSource(sound?.soundURL)
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                     mediaPlayer.prepare()
                     mediaPlayer.start()
                 } catch (e: Exception) {
@@ -94,7 +96,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                 "On Click"
             ).observe(viewLifecycleOwner) {sound ->
                 try {
+                    mediaPlayer.reset()
                     mediaPlayer.setDataSource(sound?.soundURL)
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                     mediaPlayer.prepare()
                     mediaPlayer.start()
                 } catch (e: Exception) {
@@ -111,7 +115,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                 "On Lose"
             ).observe(viewLifecycleOwner) {sound ->
                 try {
+                    mediaPlayer.reset()
                     mediaPlayer.setDataSource(sound?.soundURL)
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                     mediaPlayer.prepare()
                     mediaPlayer.start()
                 } catch (e: Exception) {
@@ -128,7 +134,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                 "Show Game"
             ).observe(viewLifecycleOwner) {sound ->
                 try {
+                    mediaPlayer.reset()
                     mediaPlayer.setDataSource(sound?.soundURL)
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                     mediaPlayer.prepare()
                     mediaPlayer.start()
                 } catch (e: Exception) {
