@@ -102,8 +102,10 @@
             android:layout_height="48dp"
             android:paddingBottom="15dp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/set_sound_button"
+            android:background="@drawable/button_color"
+            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -115,15 +117,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/test_on_win"
+            android:background="@drawable/button_color"
+            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/on_win"
             android:textSize="20dp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/test_on_lose"
+            android:background="@drawable/button_color"
+            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/on_lose"
@@ -136,15 +142,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/test_on_click"
+            android:background="@drawable/button_color"
+            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/on_click"
             android:textSize="20dp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/test_show_game"
+            android:background="@drawable/button_color"
+            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/show_trigger"
