@@ -16,7 +16,7 @@ class SoundRepository(private val dao: SoundDao) {
     fun getSoundsFilteredChosen(soundTrigger: String) =
         dao.getSoundsFilteredChosen(soundTrigger)
 
-    fun getSoundsFilteredFranchise(soundTrigger: String, soundFranchise: String) =
+    fun getSoundsFilteredFranchise(soundFranchise: String, soundTrigger: String) =
         dao.getSoundsFilteredFranchise(soundFranchise, soundTrigger)
 
     fun getSound(soundLabel: String) =
