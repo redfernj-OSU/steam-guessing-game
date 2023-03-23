@@ -18,9 +18,9 @@ interface SoundDao {
 
 //    Get all sounds with a specific sound_trigger and sound_franchise
     @Query(
-        "SELECT * FROM SoundEntity WHERE soundFranchise = :soundFranchise"
+        "SELECT * FROM SoundEntity WHERE soundFranchise = :soundFranchise AND soundTrigger = :soundTrigger LIMIT 1"
     )
-    fun getSoundsFiltered(soundFranchise: String): Flow<List<SoundEntity?>>
+    fun getSoundsFiltered(soundFranchise: String, soundTrigger: String): Flow<SoundEntity?>
 
     @Query(
         "SELECT * FROM SoundEntity WHERE soundLabel = :soundLabel"

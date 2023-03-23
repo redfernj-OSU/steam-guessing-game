@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class SoundEntity(
+    @PrimaryKey
     val soundLabel: String,
 
 //    URL to pull sound data
@@ -12,7 +13,6 @@ data class SoundEntity(
 //    How to trigger sound (win, lose, etc.)
     val soundTrigger: String,
 //    Franchise that the sound comes from
-    @PrimaryKey
     val soundFranchise: String,
 
     var chosen: Boolean = false

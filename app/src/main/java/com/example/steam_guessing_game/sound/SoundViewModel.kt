@@ -37,8 +37,8 @@ class SoundViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun getSounds(soundFranchise: String) =
-        repository.getSoundsFiltered(soundFranchise).asLiveData()
+    fun getSounds(soundFranchise: String, soundTrigger: String) =
+        repository.getSoundsFiltered(soundFranchise, soundTrigger).asLiveData()
 
     fun getSounds() =
         repository.getSoundsUnfiltered().asLiveData()

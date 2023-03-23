@@ -1,5 +1,7 @@
 package com.example.steam_guessing_game.fragment
 
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -63,6 +65,79 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                 view.findViewById<Spinner>(R.id.sound_available_spinner).getSelectedItem().toString()
             )
             findNavController().navigate(R.id.menu_fragment)
+        }
+
+        var mediaPlayer = MediaPlayer()
+        view.findViewById<Button>(R.id.test_on_win).setOnClickListener {
+
+            soundViewModel.getSounds(
+                view.findViewById<Spinner>(R.id.sound_available_spinner).getSelectedItem().toString(),
+                "On Win"
+                ).observe(viewLifecycleOwner) {sound ->
+                var mediaPlayer = MediaPlayer()
+                try {
+                    mediaPlayer.setDataSource(sound?.soundURL)
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+        }
+
+        view.findViewById<Button>(R.id.test_on_click).setOnClickListener {
+
+            soundViewModel.getSounds(
+                view.findViewById<Spinner>(R.id.sound_available_spinner).getSelectedItem().toString(),
+                "On Click"
+            ).observe(viewLifecycleOwner) {sound ->
+                var mediaPlayer = MediaPlayer()
+                try {
+                    mediaPlayer.setDataSource(sound?.soundURL)
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+        }
+
+        view.findViewById<Button>(R.id.test_on_lose).setOnClickListener {
+
+            soundViewModel.getSounds(
+                view.findViewById<Spinner>(R.id.sound_available_spinner).getSelectedItem().toString(),
+                "On Lose"
+            ).observe(viewLifecycleOwner) {sound ->
+                var mediaPlayer = MediaPlayer()
+                try {
+                    mediaPlayer.setDataSource(sound?.soundURL)
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+        }
+
+        view.findViewById<Button>(R.id.test_show_game).setOnClickListener {
+
+            soundViewModel.getSounds(
+                view.findViewById<Spinner>(R.id.sound_available_spinner).getSelectedItem().toString(),
+                "Show Game"
+            ).observe(viewLifecycleOwner) {sound ->
+                var mediaPlayer = MediaPlayer()
+                try {
+                    mediaPlayer.setDataSource(sound?.soundURL)
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
         }
     }
 }
