@@ -6,6 +6,11 @@
                 android:startColor="#2d546c"
                 android:endColor="#2d546c">
             </gradient>
+            <padding android:left="7dp"
+                android:top="7dp"
+                android:right="7dp"
+                android:bottom="7dp" />
+            <corners android:radius= "8dp" />
         </shape>
     </item>
 </selector>
