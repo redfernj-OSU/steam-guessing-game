@@ -79,8 +79,9 @@
 
 
     <!--    Confirmation Button-->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/create_sound_button"
+            android:background="@drawable/button_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sound_button"
