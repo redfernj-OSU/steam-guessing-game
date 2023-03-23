@@ -11,7 +11,11 @@
         android:label="@string/main_menu">
             <action
                 android:id="@+id/navigate_to_game"
-                app:destination="@id/game_fragment"/>
+                app:destination="@id/game_fragment">
+                <argument
+                    android:name="currentScore"
+                    app:argType="integer" />
+            </action>
 
             <action
                 android:id="@+id/navigate_to_create_sound"
@@ -34,6 +38,9 @@
             <argument
                 android:name="correctID"
                 app:argType="integer" />
+            <argument
+                android:name="currentScore"
+                app:argType="integer" />
         </action>
     </fragment>
 
@@ -43,7 +50,11 @@
         android:label="@string/result">
         <action
             android:id="@+id/navigate_to_game"
-            app:destination="@id/game_fragment"/>
+            app:destination="@id/game_fragment">
+            <argument
+                android:name="currentScore"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment

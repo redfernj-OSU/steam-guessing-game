@@ -18,6 +18,9 @@ class ResultsFragment: Fragment(R.layout.results) {
         val correctIndex = requireArguments().getInt("randomIndex")
         val selectedIndex = requireArguments().getInt("selectedIndex")
         val correctID = requireArguments().getInt("correctID")
+        var curScore = requireArguments().getInt("currentScore")
+
+        val continueButton = view.findViewById<Button>(R.id.continue_button)
 
 
 
@@ -27,13 +30,21 @@ class ResultsFragment: Fragment(R.layout.results) {
         if(correctIndex == selectedIndex){
             view.findViewById<TextView>(R.id.win_text).visibility = View.VISIBLE
             view.findViewById<TextView>(R.id.lose_text).visibility = View.INVISIBLE
+            curScore += 1
             //win condition
         }
         else{
             view.findViewById<TextView>(R.id.lose_text).visibility = View.VISIBLE
             view.findViewById<TextView>(R.id.win_text).visibility = View.INVISIBLE
+            curScore = 0
             //lose condition
         }
+        continueButton.setOnClickListener{
+            Log.d("Score", curScore.toString())
+            val action = ResultsFragmentDirections.navigateToGame(curScore)
+            findNavController().navigate(action)
+        }
+
     }
 
 }
