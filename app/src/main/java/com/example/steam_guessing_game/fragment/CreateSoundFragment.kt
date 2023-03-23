@@ -139,5 +139,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
             }
 
         }
+
+        view.findViewById<Button>(R.id.main_menu_button_sound).setOnClickListener{
+            findNavController().navigate(R.id.menu_fragment)
+        }
     }
 }
