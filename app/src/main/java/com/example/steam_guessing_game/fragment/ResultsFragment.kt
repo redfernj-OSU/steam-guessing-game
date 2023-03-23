@@ -1,5 +1,7 @@
 package com.example.steam_guessing_game.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -23,6 +25,7 @@ class ResultsFragment: Fragment(R.layout.results) {
 
         val continueButton = view.findViewById<Button>(R.id.continue_button)
         val menuButton = view.findViewById<Button>(R.id.return_to_menu_button)
+        val steamButton = view.findViewById<Button>(R.id.steam_page_button)
 
 
 
@@ -33,7 +36,6 @@ class ResultsFragment: Fragment(R.layout.results) {
             view.findViewById<TextView>(R.id.win_text).visibility = View.VISIBLE
             view.findViewById<TextView>(R.id.lose_text).visibility = View.INVISIBLE
             continueButton.visibility = View.VISIBLE
-            menuButton.visibility = View.INVISIBLE
             curScore += 1
             //win condition
         }
@@ -41,9 +43,14 @@ class ResultsFragment: Fragment(R.layout.results) {
             view.findViewById<TextView>(R.id.lose_text).visibility = View.VISIBLE
             view.findViewById<TextView>(R.id.win_text).visibility = View.INVISIBLE
             continueButton.visibility = View.INVISIBLE
-            menuButton .visibility = View.VISIBLE
             curScore = 0
             //lose condition
+        }
+        steamButton.setOnClickListener{
+            val url = "https://store.steampowered.com/app/${correctID}/"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
         }
         continueButton.setOnClickListener{
             Log.d("Score", curScore.toString())

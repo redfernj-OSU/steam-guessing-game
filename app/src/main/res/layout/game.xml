@@ -27,8 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:scrollbars="vertical"
-                android:text="Hello World!"
-                android:textSize="15dp"/>
+                android:textColor="#E5E7EC"
+                android:textSize="15dp" />
         </ScrollView>
     </FrameLayout>
 
