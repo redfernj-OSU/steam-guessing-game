@@ -37,7 +37,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
         soundViewModel.getSounds().observe(viewLifecycleOwner) {sounds ->
             val soundLabels: ArrayList<String> = arrayListOf()
             for (i in sounds) {
-                soundLabels.add(i.soundFranchise)
+                if (!soundLabels.contains(i.soundFranchise)) {
+                    soundLabels.add(i.soundFranchise)
+                }
             }
 
             val adapter = ArrayAdapter(
@@ -74,7 +76,6 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                 view.findViewById<Spinner>(R.id.sound_available_spinner).getSelectedItem().toString(),
                 "On Win"
                 ).observe(viewLifecycleOwner) {sound ->
-                var mediaPlayer = MediaPlayer()
                 try {
                     mediaPlayer.setDataSource(sound?.soundURL)
                     mediaPlayer.prepare()
@@ -92,7 +93,6 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                 view.findViewById<Spinner>(R.id.sound_available_spinner).getSelectedItem().toString(),
                 "On Click"
             ).observe(viewLifecycleOwner) {sound ->
-                var mediaPlayer = MediaPlayer()
                 try {
                     mediaPlayer.setDataSource(sound?.soundURL)
                     mediaPlayer.prepare()
@@ -110,7 +110,6 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                 view.findViewById<Spinner>(R.id.sound_available_spinner).getSelectedItem().toString(),
                 "On Lose"
             ).observe(viewLifecycleOwner) {sound ->
-                var mediaPlayer = MediaPlayer()
                 try {
                     mediaPlayer.setDataSource(sound?.soundURL)
                     mediaPlayer.prepare()
@@ -128,7 +127,6 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                 view.findViewById<Spinner>(R.id.sound_available_spinner).getSelectedItem().toString(),
                 "Show Game"
             ).observe(viewLifecycleOwner) {sound ->
-                var mediaPlayer = MediaPlayer()
                 try {
                     mediaPlayer.setDataSource(sound?.soundURL)
                     mediaPlayer.prepare()
