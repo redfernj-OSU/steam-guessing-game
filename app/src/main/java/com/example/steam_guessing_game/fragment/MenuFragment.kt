@@ -13,7 +13,8 @@ class MenuFragment: Fragment(R.layout.menu) {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.start_game_button).setOnClickListener {
-            findNavController().navigate(R.id.game_fragment)
+            val action = MenuFragmentDirections.navigateToGame(0)
+            findNavController().navigate(action)
         }
 
         view.findViewById<Button>(R.id.start_create_sound_button).setOnClickListener {

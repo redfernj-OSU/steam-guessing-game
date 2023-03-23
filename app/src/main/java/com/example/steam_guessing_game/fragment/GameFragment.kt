@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -37,22 +38,62 @@ class GameFragment: Fragment(R.layout.game) {
     private var correctID = 0
     private var review = ""
     lateinit var apps : List<App>
+    lateinit var ImageView3 : ImageView
+    lateinit var ImageView4 : ImageView
+    lateinit var ImageView5 : ImageView
+    lateinit var ImageView6 : ImageView
+
+
 
     private val steamStoreService = SteamStoreService.create()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val curScore = requireArguments().getInt("currentScore")
         super.onViewCreated(view, savedInstanceState)
 
-        getSteamApps()
+        val nums = listOf(R.id.imageView3, R.id.imageView4, R.id.imageView5, R.id.imageView6)
+        val randomIndex = nums.shuffled()
+
+        getSteamApps(randomIndex)
+
+        ImageView3 = view.findViewById<ImageView>(R.id.imageView3)
+        ImageView4 = view.findViewById<ImageView>(R.id.imageView4)
+        ImageView5 = view.findViewById<ImageView>(R.id.imageView5)
+        ImageView6 = view.findViewById<ImageView>(R.id.imageView6)
+        val scoreText = view.findViewById<TextView>(R.id.scoreText)
+        scoreText.text = "Score: ${curScore}"
+
+        ImageView3.isEnabled = false
+        ImageView4.isEnabled = false
+        ImageView5.isEnabled = false
+        ImageView6.isEnabled = false
+
+
+        ImageView3.setOnClickListener {
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], R.id.imageView3, correctID, curScore)
+            findNavController().navigate(action)
+        }
+        ImageView4.setOnClickListener {
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], R.id.imageView4, correctID, curScore)
+            findNavController().navigate(action)
+        }
+        ImageView5.setOnClickListener {
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], R.id.imageView5, correctID, curScore)
+            findNavController().navigate(action)
+        }
+        ImageView6.setOnClickListener {
+            val action = GameFragmentDirections.navigateToResults(randomIndex[0], R.id.imageView6, correctID, curScore)
+            findNavController().navigate(action)
+        }
     }
 
-    private fun getSteamApps(){
+    private fun getSteamApps(randomIndex: List<Int>){
         steamService.getQueries()
             .enqueue(object : Callback<SteamQueryResults> {
                 override fun onResponse(call: Call<SteamQueryResults>, response: Response<SteamQueryResults>){
                     if(response.isSuccessful){
                         apps = response.body()!!.applist.apps
-                        getReviews(apps[Random.nextInt(apps.size)].appid.toLong())
+                        getReviews(apps[Random.nextInt(apps.size)].appid.toLong(), randomIndex)
 
                     }
                     else{
@@ -67,7 +108,7 @@ class GameFragment: Fragment(R.layout.game) {
             })
     }
 
-    private fun getReviews(id : Long){
+    private fun getReviews(id : Long, randomIndex : List<Int>){
         steamStoreService.getReviews(id)
             .enqueue(object : Callback<ReviewResults>{
                 override fun onResponse(call: Call<ReviewResults>, response: Response<ReviewResults>){
@@ -77,31 +118,38 @@ class GameFragment: Fragment(R.layout.game) {
                             review = response.body()!!.reviews[0].review
                             view!!.findViewById<TextView>(R.id.textViewReview).text = review
                             correctID = id.toInt()
-                            val imageView = view!!.findViewById<ImageView>(R.id.imageView3)
 
 
-                            if(placeImage(imageView, correctID.toLong(), true)){
+                            val imageView = view!!.findViewById<ImageView>(randomIndex[0])
+
+
+                            if(placeImage(imageView, correctID.toLong(), true, randomIndex)){
                                 var temp = false
                                 while(!temp){
-                                    temp = placeImage(view!!.findViewById<ImageView>(R.id.imageView4),1641950, false)
+                                    temp = placeImage(view!!.findViewById<ImageView>(randomIndex[1]),apps[Random.nextInt(apps.size)].appid.toLong(), false, randomIndex)
                                 }
                                 temp = false
                                 while(!temp){
-                                    temp = placeImage(view!!.findViewById<ImageView>(R.id.imageView5),apps[Random.nextInt(apps.size)].appid.toLong(), false)
+                                    temp = placeImage(view!!.findViewById<ImageView>(randomIndex[2]),apps[Random.nextInt(apps.size)].appid.toLong(), false, randomIndex)
                                 }
                                 temp = false
                                 while(!temp){
-                                    temp = placeImage(view!!.findViewById<ImageView>(R.id.imageView6),apps[Random.nextInt(apps.size)].appid.toLong(), false)
+                                    temp = placeImage(view!!.findViewById<ImageView>(randomIndex[3]),apps[Random.nextInt(apps.size)].appid.toLong(), false, randomIndex)
                                 }
-                                Log.d("MainActivity", "Review: ${correctID} ::: ${review}")
+                                Log.d("Review", "Review: ${correctID} ::: ${review}")
                             }
                             else{
-                                getReviews(apps[Random.nextInt(apps.size)].appid.toLong())
+                                getReviews(apps[Random.nextInt(apps.size)].appid.toLong(), randomIndex)
                             }
                         }
                         else{
-                            getReviews(apps[Random.nextInt(apps.size)].appid.toLong())
+                            getReviews(apps[Random.nextInt(apps.size)].appid.toLong(), randomIndex)
                         }
+
+                        ImageView3.isEnabled = true
+                        ImageView4.isEnabled = true
+                        ImageView5.isEnabled = true
+                        ImageView6.isEnabled = true
 
                     }
                     else{
@@ -116,8 +164,9 @@ class GameFragment: Fragment(R.layout.game) {
             })
     }
 
-    private fun placeImage(view: ImageView, id: Long, isMain: Boolean) : Boolean{
+    private fun placeImage(view: ImageView, id: Long, isMain: Boolean, randomIndex: List<Int>) : Boolean{
         val url = "https://cdn.cloudflare.steamstatic.com/steam/apps/${id}/capsule_231x87.jpg"
+        view.tag = url
         val handler = Handler(Looper.getMainLooper())
         if(isUrlValid(url)){
             Glide.with(requireContext())
@@ -125,7 +174,7 @@ class GameFragment: Fragment(R.layout.game) {
                 .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(e: GlideException?, model: Any?, target: com.bumptech.glide.request.target.Target<Drawable>?, isFirstResource: Boolean): Boolean {
                         handler.post{
-                            placeImage(view,apps[Random.nextInt(apps.size)].appid.toLong(), false)
+                            placeImage(view,apps[Random.nextInt(apps.size)].appid.toLong(), false, randomIndex)
                         }
                         return false
                     }
@@ -135,7 +184,7 @@ class GameFragment: Fragment(R.layout.game) {
                             if(correctID != id.toInt()){
                                 correctID = id.toInt()
                                 handler.post{
-                                    getReviews(id)
+                                    getReviews(id, randomIndex)
                                 }
                             }
 
