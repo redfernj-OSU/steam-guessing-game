@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         val defaultOnWin = SoundEntity(
             "default_on_win",
-            "https://wiki.teamfortress.com/wiki/File:Sf12_bcon_held_up10.wav",
+            "https://wiki.teamfortress.com/w/images/d/d6/Sf12_bcon_held_up10.wav",
             "On Win",
             "default",
         true
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         val defaultOnLose = SoundEntity(
             "default_on_lose",
-            "https://wiki.teamfortress.com/wiki/File:Farmer_lose03.wav",
+            "https://wiki.teamfortress.com/w/images/b/be/Farmer_lose03.wav",
             "On Lose",
             "default",
             true
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         val defaultOnClick = SoundEntity(
             "default_on_click",
-            "https://wiki.teamfortress.com/wiki/File:Hitsound.wav",
+            "https://wiki.teamfortress.com/w/images/c/cf/Hitsound.wav",
             "On Click",
             "default",
             true
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         val defaultShowGame = SoundEntity(
             "default_show_game",
-            "https://wiki.teamfortress.com/wiki/File:Farmer_roundstart04.wav",
+            "https://wiki.teamfortress.com/w/images/f/f6/Farmer_roundstart04.wav",
             "Show Game",
             "default",
             true
