@@ -21,14 +21,9 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         appBarConfig = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfig)
+        supportActionBar?.hide()
+        //setupActionBarWithNavController(navController, appBarConfig)
 
 //        findViewById<NavigationView>(R.id.)?.setupWithNavController(navController)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfig)
-                || super.onSupportNavigateUp()
     }
 }

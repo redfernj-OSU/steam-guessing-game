@@ -16,7 +16,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="invisible"
-        android:text="Correct"
         app:layout_constraintTop_toTopOf="parent">></TextView>
 
     <TextView
@@ -29,7 +28,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         android:visibility= "invisible"
-        android:text="You Lose"
         app:layout_constraintTop_toTopOf="parent">></TextView>
 
     <ImageView
