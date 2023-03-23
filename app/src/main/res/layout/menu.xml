@@ -89,4 +89,12 @@
         android:layout_gravity="center"
         android:textSize="20dp"/>
 
+    <TextView
+        android:id="@+id/MenuHighScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="High Score: 0"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

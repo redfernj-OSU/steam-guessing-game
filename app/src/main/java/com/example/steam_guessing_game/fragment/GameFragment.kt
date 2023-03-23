@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.findFragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -27,6 +28,7 @@ import com.example.steam_guessing_game.api.SteamStoreService
 import com.example.steam_guessing_game.data.App
 import com.example.steam_guessing_game.data.ReviewResults
 import com.example.steam_guessing_game.data.SteamQueryResults
+import com.example.steam_guessing_game.highscore.HighscoreViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,6 +39,7 @@ class GameFragment: Fragment(R.layout.game) {
     private val steamService = SteamService.create()
     private var correctID = 0
     private var review = ""
+    private val hsview : HighscoreViewModel by viewModels()
     lateinit var apps : List<App>
     lateinit var ImageView3 : ImageView
     lateinit var ImageView4 : ImageView
@@ -48,8 +51,18 @@ class GameFragment: Fragment(R.layout.game) {
     private val steamStoreService = SteamStoreService.create()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         val curScore = requireArguments().getInt("currentScore")
         super.onViewCreated(view, savedInstanceState)
+
+        hsview.getScore().observe(viewLifecycleOwner){highscore->
+            if(highscore.score > curScore){
+                view.findViewById<TextView>(R.id.GameHighScore).text = "High Score: ${highscore.score}"
+            }
+            else{
+                view.findViewById<TextView>(R.id.GameHighScore).text = "High Score: ${curScore}"
+            }
+        }
 
         val nums = listOf(R.id.imageView3, R.id.imageView4, R.id.imageView5, R.id.imageView6)
         val randomIndex = nums.shuffled()
@@ -67,6 +80,8 @@ class GameFragment: Fragment(R.layout.game) {
         ImageView4.isEnabled = false
         ImageView5.isEnabled = false
         ImageView6.isEnabled = false
+
+
 
 
         ImageView3.setOnClickListener {

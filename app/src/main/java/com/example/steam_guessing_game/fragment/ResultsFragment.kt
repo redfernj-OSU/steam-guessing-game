@@ -13,16 +13,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.example.steam_guessing_game.R
+import com.example.steam_guessing_game.highscore.HighscoreEntity
+import com.example.steam_guessing_game.highscore.HighscoreViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlin.random.Random
 
 class ResultsFragment: Fragment(R.layout.results) {
+
+    private val hsview : HighscoreViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,8 +43,11 @@ class ResultsFragment: Fragment(R.layout.results) {
         val resultImage = view.findViewById<ImageView>(R.id.picked_image)
         placeImage(resultImage, correctID.toLong())
 
-
-        Log.d("Results", "${correctID}")
+        hsview.getScore().observe(viewLifecycleOwner){highscore->
+            if(curScore > highscore.score){
+                hsview.addScore(HighscoreEntity("Highscore", curScore))
+            }
+        }
 
         if(correctIndex == selectedIndex){
             view.findViewById<TextView>(R.id.win_text).visibility = View.VISIBLE
@@ -67,7 +75,6 @@ class ResultsFragment: Fragment(R.layout.results) {
             findNavController().navigate(action)
         }
         menuButton.setOnClickListener{
-            Log.d("Score", curScore.toString())
             findNavController().navigate(R.id.menu_fragment)
         }
 
