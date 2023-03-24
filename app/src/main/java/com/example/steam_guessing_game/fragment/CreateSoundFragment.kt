@@ -26,18 +26,38 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
 
         var mediaPlayer = MediaPlayer()
         soundViewModel.getSounds("On Click").observe(viewLifecycleOwner) {sound ->
-            try {
-                mediaPlayer.reset()
-                mediaPlayer.setDataSource(sound[0]?.soundURL)
-                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-                mediaPlayer.prepare()
-                mediaPlayer.start()
-                mediaPlayer.setOnCompletionListener {
-                    mediaPlayer.release()
+            if (sound.size == 1) {
+                try {
+                    mediaPlayer.reset()
+                    mediaPlayer.setDataSource(sound[0]?.soundURL)
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                    mediaPlayer.setOnCompletionListener {
+                        mediaPlayer.release()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
+            } else if(sound.size > 1){
+                for (i in sound) {
+                    if(i?.soundFranchise != "default") {
+                        try {
+                            mediaPlayer.reset()
+                            mediaPlayer.setDataSource(i?.soundURL)
+                            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                            mediaPlayer.prepare()
+                            mediaPlayer.start()
+                            mediaPlayer.setOnCompletionListener {
+                                mediaPlayer.release()
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
             }
+
         }
 
         val triggerSpinner: Spinner = view.findViewById(R.id.sound_trigger_spinner)

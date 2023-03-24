@@ -60,16 +60,39 @@ class ResultsFragment: Fragment(R.layout.results) {
 
         if(correctIndex == selectedIndex){
             soundViewModel.getSounds("On Win").observe(viewLifecycleOwner) {sound ->
-                try {
-                    mediaPlayer.reset()
-                    mediaPlayer.setDataSource(sound[0]?.soundURL)
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-                    mediaPlayer.prepare()
-                    mediaPlayer.start()
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                if (sound.size == 1) {
+                    try {
+                        mediaPlayer.reset()
+                        mediaPlayer.setDataSource(sound[0]?.soundURL)
+                        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                        mediaPlayer.prepare()
+                        mediaPlayer.start()
+                        mediaPlayer.setOnCompletionListener {
+                            mediaPlayer.release()
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                } else if(sound.size > 1){
+                    for (i in sound) {
+                        if(i?.soundFranchise != "default") {
+                            try {
+                                mediaPlayer.reset()
+                                mediaPlayer.setDataSource(i?.soundURL)
+                                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                                mediaPlayer.prepare()
+                                mediaPlayer.start()
+                                mediaPlayer.setOnCompletionListener {
+                                    mediaPlayer.release()
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
                 }
             }
+
             view.findViewById<TextView>(R.id.win_text).visibility = View.VISIBLE
             view.findViewById<TextView>(R.id.lose_text).visibility = View.INVISIBLE
             continueButton.visibility = View.VISIBLE
@@ -78,14 +101,36 @@ class ResultsFragment: Fragment(R.layout.results) {
         }
         else{
             soundViewModel.getSounds("On Lose").observe(viewLifecycleOwner) {sound ->
-                try {
-                    mediaPlayer.reset()
-                    mediaPlayer.setDataSource(sound[0]?.soundURL)
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-                    mediaPlayer.prepare()
-                    mediaPlayer.start()
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                if (sound.size == 1) {
+                    try {
+                        mediaPlayer.reset()
+                        mediaPlayer.setDataSource(sound[0]?.soundURL)
+                        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                        mediaPlayer.prepare()
+                        mediaPlayer.start()
+                        mediaPlayer.setOnCompletionListener {
+                            mediaPlayer.release()
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                } else if(sound.size > 1){
+                    for (i in sound) {
+                        if(i?.soundFranchise != "default") {
+                            try {
+                                mediaPlayer.reset()
+                                mediaPlayer.setDataSource(i?.soundURL)
+                                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                                mediaPlayer.prepare()
+                                mediaPlayer.start()
+                                mediaPlayer.setOnCompletionListener {
+                                    mediaPlayer.release()
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
                 }
             }
             view.findViewById<TextView>(R.id.lose_text).visibility = View.VISIBLE

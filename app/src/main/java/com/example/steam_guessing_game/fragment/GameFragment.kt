@@ -71,17 +71,36 @@ class GameFragment: Fragment(R.layout.game) {
         if (curScore == 0) {
             var mediaPlayer = MediaPlayer()
             soundViewModel.getSounds("Show Game").observe(viewLifecycleOwner) {sound ->
-                try {
-                    mediaPlayer.reset()
-                    mediaPlayer.setDataSource(sound[0]?.soundURL)
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-                    mediaPlayer.prepare()
-                    mediaPlayer.start()
-                    mediaPlayer.setOnCompletionListener {
-                        mediaPlayer.release()
+                if (sound.size == 1) {
+                    try {
+                        mediaPlayer.reset()
+                        mediaPlayer.setDataSource(sound[0]?.soundURL)
+                        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                        mediaPlayer.prepare()
+                        mediaPlayer.start()
+                        mediaPlayer.setOnCompletionListener {
+                            mediaPlayer.release()
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                } else if(sound.size > 1){
+                    for (i in sound) {
+                        if(i?.soundFranchise != "default") {
+                            try {
+                                mediaPlayer.reset()
+                                mediaPlayer.setDataSource(i?.soundURL)
+                                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                                mediaPlayer.prepare()
+                                mediaPlayer.start()
+                                mediaPlayer.setOnCompletionListener {
+                                    mediaPlayer.release()
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
                 }
             }
         }
