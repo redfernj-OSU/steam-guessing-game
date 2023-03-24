@@ -2,6 +2,8 @@ package com.example.steam_guessing_game.fragment
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -10,6 +12,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
@@ -22,12 +25,15 @@ import com.bumptech.glide.request.RequestListener
 import com.example.steam_guessing_game.R
 import com.example.steam_guessing_game.highscore.HighscoreEntity
 import com.example.steam_guessing_game.highscore.HighscoreViewModel
+import com.example.steam_guessing_game.sound.SoundViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlin.random.Random
 
 class ResultsFragment: Fragment(R.layout.results) {
 
     private val hsview : HighscoreViewModel by viewModels()
+    private val soundViewModel : SoundViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -41,6 +47,9 @@ class ResultsFragment: Fragment(R.layout.results) {
         val steamButton = view.findViewById<Button>(R.id.steam_page_button)
 
         val resultImage = view.findViewById<ImageView>(R.id.picked_image)
+
+        var mediaPlayer = MediaPlayer()
+
         placeImage(resultImage, correctID.toLong())
 
         hsview.getScore().observe(viewLifecycleOwner){highscore->
@@ -50,6 +59,17 @@ class ResultsFragment: Fragment(R.layout.results) {
         }
 
         if(correctIndex == selectedIndex){
+            soundViewModel.getSounds("On Win").observe(viewLifecycleOwner) {sound ->
+                try {
+                    mediaPlayer.reset()
+                    mediaPlayer.setDataSource(sound[0]?.soundURL)
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
             view.findViewById<TextView>(R.id.win_text).visibility = View.VISIBLE
             view.findViewById<TextView>(R.id.lose_text).visibility = View.INVISIBLE
             continueButton.visibility = View.VISIBLE
@@ -57,6 +77,17 @@ class ResultsFragment: Fragment(R.layout.results) {
             //win condition
         }
         else{
+            soundViewModel.getSounds("On Lose").observe(viewLifecycleOwner) {sound ->
+                try {
+                    mediaPlayer.reset()
+                    mediaPlayer.setDataSource(sound[0]?.soundURL)
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
             view.findViewById<TextView>(R.id.lose_text).visibility = View.VISIBLE
             view.findViewById<TextView>(R.id.win_text).visibility = View.INVISIBLE
             continueButton.visibility = View.INVISIBLE
