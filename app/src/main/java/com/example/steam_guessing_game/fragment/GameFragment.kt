@@ -1,6 +1,8 @@
 package com.example.steam_guessing_game.fragment
 
 import android.graphics.drawable.Drawable
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -29,6 +31,7 @@ import com.example.steam_guessing_game.data.App
 import com.example.steam_guessing_game.data.ReviewResults
 import com.example.steam_guessing_game.data.SteamQueryResults
 import com.example.steam_guessing_game.highscore.HighscoreViewModel
+import com.example.steam_guessing_game.sound.SoundViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,6 +43,7 @@ class GameFragment: Fragment(R.layout.game) {
     private var correctID = 0
     private var review = ""
     private val hsview : HighscoreViewModel by viewModels()
+    private val soundViewModel: SoundViewModel by viewModels()
     lateinit var apps : List<App>
     lateinit var ImageView3 : ImageView
     lateinit var ImageView4 : ImageView
@@ -61,6 +65,24 @@ class GameFragment: Fragment(R.layout.game) {
             }
             else{
                 view.findViewById<TextView>(R.id.GameHighScore).text = "High Score: ${curScore}"
+            }
+        }
+
+        if (curScore == 0) {
+            var mediaPlayer = MediaPlayer()
+            soundViewModel.getSounds("Show Game").observe(viewLifecycleOwner) {sound ->
+                try {
+                    mediaPlayer.reset()
+                    mediaPlayer.setDataSource(sound[0]?.soundURL)
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                    mediaPlayer.setOnCompletionListener {
+                        mediaPlayer.release()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
 
@@ -103,6 +125,7 @@ class GameFragment: Fragment(R.layout.game) {
     }
 
     private fun getSteamApps(randomIndex: List<Int>){
+
         steamService.getQueries()
             .enqueue(object : Callback<SteamQueryResults> {
                 override fun onResponse(call: Call<SteamQueryResults>, response: Response<SteamQueryResults>){

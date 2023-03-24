@@ -24,6 +24,22 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        var mediaPlayer = MediaPlayer()
+        soundViewModel.getSounds("On Click").observe(viewLifecycleOwner) {sound ->
+            try {
+                mediaPlayer.reset()
+                mediaPlayer.setDataSource(sound[0]?.soundURL)
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+                mediaPlayer.prepare()
+                mediaPlayer.start()
+                mediaPlayer.setOnCompletionListener {
+                    mediaPlayer.release()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
         val triggerSpinner: Spinner = view.findViewById(R.id.sound_trigger_spinner)
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -70,7 +86,6 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
             findNavController().navigate(R.id.menu_fragment)
         }
 
-        var mediaPlayer = MediaPlayer()
         view.findViewById<Button>(R.id.test_on_win).setOnClickListener {
 
             soundViewModel.getSounds(
@@ -83,6 +98,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                     mediaPlayer.prepare()
                     mediaPlayer.start()
+                    mediaPlayer.setOnCompletionListener {
+                        mediaPlayer.release()
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -102,6 +120,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                     mediaPlayer.prepare()
                     mediaPlayer.start()
+                    mediaPlayer.setOnCompletionListener {
+                        mediaPlayer.release()
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -121,6 +142,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                     mediaPlayer.prepare()
                     mediaPlayer.start()
+                    mediaPlayer.setOnCompletionListener {
+                        mediaPlayer.release()
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -140,6 +164,9 @@ class CreateSoundFragment: Fragment(R.layout.create_sound) {
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                     mediaPlayer.prepare()
                     mediaPlayer.start()
+                    mediaPlayer.setOnCompletionListener {
+                        mediaPlayer.release()
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

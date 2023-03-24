@@ -1,5 +1,7 @@
 package com.example.steam_guessing_game.fragment
 
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.steam_guessing_game.R
 import com.example.steam_guessing_game.highscore.HighscoreEntity
 import com.example.steam_guessing_game.highscore.HighscoreViewModel
+import com.example.steam_guessing_game.sound.SoundViewModel
 
 class MenuFragment: Fragment(R.layout.menu) {
     private val hsview : HighscoreViewModel by viewModels()
@@ -29,6 +32,8 @@ class MenuFragment: Fragment(R.layout.menu) {
         }
 
         super.onViewCreated(view, savedInstanceState)
+
+
 
         view.findViewById<Button>(R.id.start_game_button).setOnClickListener {
             val action = MenuFragmentDirections.navigateToGame(0)
